@@ -23,4 +23,9 @@ export class Stock {
   lister() {
     return [...this.#produits.values()].sort((a, b) => a.ref.localeCompare(b.ref));
   }
+
+  // Produits dont la quantité a atteint le seuil d'alerte
+  alertes() {
+    return this.lister().filter((p) => p.quantite <= p.seuil);
+  }
 }
