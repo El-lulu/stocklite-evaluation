@@ -2,7 +2,7 @@ export class Stock {
   #produits = new Map();
 
   ajouter(ref, nom, quantite, seuil = 0) {
-    if (!ref || !nom) throw new Error('Référence et nom obligatoires');
+    if (!ref || !nom) throw new Error('La référence et le nom sont obligatoires');
     if (!Number.isInteger(quantite) || quantite < 0) throw new Error('Quantité invalide');
     this.#produits.set(ref, { ref, nom, quantite, seuil });
     return this.#produits.get(ref);
