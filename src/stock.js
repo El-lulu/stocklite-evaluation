@@ -3,7 +3,7 @@ export class Stock {
 
   ajouter(ref, nom, quantite, seuil = 0) {
     if (!ref || !nom) throw new Error('La référence et le nom sont obligatoires');
-    if (!Number.isInteger(quantite) || quantite < 0) throw new Error('Quantité invalide');
+    if (!Number.isInteger(quantite) || quantite < 0) throw new Error('Quantité invalide : entier positif attendu');
     this.#produits.set(ref, { ref, nom, quantite, seuil });
     return this.#produits.get(ref);
   }
