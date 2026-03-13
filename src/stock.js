@@ -21,7 +21,7 @@ export class Stock {
   }
 
   lister() {
-    return [...this.#produits.values()].sort((a, b) => a.ref.localeCompare(b.ref));
+    return [...this.#produits.values()].sort((a, b) => a.ref.localeCompare(b.ref, 'fr'));
   }
 
   // Produits dont la quantité a atteint le seuil d'alerte
