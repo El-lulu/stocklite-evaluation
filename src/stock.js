@@ -10,7 +10,7 @@ export class Stock {
 
   retirer(ref, quantite) {
     const p = this.#produits.get(ref);
-    if (!p) throw new Error(`Produit inconnu : ${ref}`);
+    if (!p) throw new Error(`Produit inconnu (référence ${ref})`);
     if (quantite > p.quantite) throw new Error('Stock insuffisant');
     p.quantite -= quantite;
     return p;
