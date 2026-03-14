@@ -17,7 +17,7 @@ export class Stock {
   }
 
   obtenir(ref) {
-    return this.#produits.get(ref) ?? null;
+    return this.#produits.has(ref) ? this.#produits.get(ref) : null;
   }
 
   lister() {
@@ -26,6 +26,6 @@ export class Stock {
 
   // Produits dont la quantité a atteint le seuil d'alerte
   alertes() {
-    return this.lister().filter((p) => p.quantite <= p.seuil);
+    return this.lister().filter((p) => p.quantite < p.seuil);
   }
 }
