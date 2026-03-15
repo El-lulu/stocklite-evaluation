@@ -11,6 +11,7 @@ export class Stock {
   retirer(ref, quantite) {
     const p = this.#produits.get(ref);
     if (!p) throw new Error(`Produit inconnu (référence ${ref})`);
+    // TODO: gérer les quantités négatives
     if (quantite > p.quantite) throw new Error('Stock insuffisant');
     p.quantite -= quantite;
     return p;
@@ -24,7 +25,7 @@ export class Stock {
     return [...this.#produits.values()].sort((a, b) => a.ref.localeCompare(b.ref, 'fr'));
   }
 
-  // Produits dont la quantité a atteint le seuil d'alerte
+  // Produits en alerte : quantité inférieure ou égale au seuil
   alertes() {
     return this.lister().filter((p) => p.quantite < p.seuil);
   }
