@@ -12,7 +12,7 @@ export class Stock {
     const p = this.#produits.get(ref);
     if (!p) throw new Error(`Produit inconnu (référence ${ref})`);
     // TODO: gérer les quantités négatives
-    if (quantite > p.quantite) throw new Error('Stock insuffisant');
+    if (quantite > p.quantite) throw new Error('Quantité en stock insuffisante');
     p.quantite -= quantite;
     return p;
   }
