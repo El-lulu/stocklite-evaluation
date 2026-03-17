@@ -18,7 +18,7 @@ export class Stock {
   }
 
   obtenir(ref) {
-    return this.#produits.has(ref) ? this.#produits.get(ref) : null;
+    return this.#produits.get(ref) ?? null;
   }
 
   lister() {
