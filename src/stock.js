@@ -29,4 +29,9 @@ export class Stock {
   alertes() {
     return this.lister().filter((p) => p.quantite < p.seuil);
   }
+
+  // Valeur totale du stock selon une table de prix { ref: prix }
+  valeurTotale(prix) {
+    return this.lister().reduce((s, p) => s + p.quantite * (prix[p.ref] ?? 0), 0);
+  }
 }
