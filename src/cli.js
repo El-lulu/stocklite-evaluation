@@ -5,8 +5,6 @@ import { chargerExemple } from './outils.js';
 const stock = chargerExemple(new Stock());
 const commande = process.argv[2] ?? 'lister';
 
-console.log('★★★ STOCKLITE ★★★ LE MEILLEUR GESTIONNAIRE DE STOCK ★★★');
-
 switch (commande) {
   case 'lister':
     console.log(formaterTableau(stock.lister()));
