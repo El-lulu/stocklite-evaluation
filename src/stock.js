@@ -25,8 +25,17 @@ export class Stock {
     return [...this.#produits.values()].sort((a, b) => a.ref.localeCompare(b.ref, 'fr'));
   }
 
+<<<<<<< HEAD
   parCategorie(categorie) {
     return this.lister().filter((p) => p.categorie === categorie);
+=======
+  // Produits en alerte : quantité inférieure ou égale au seuil
+  alertes({ seulementCritiques = false } = {}) {
+    return this.lister()
+      .filter((p) => p.quantite < p.seuil)
+      .map((p) => ({ ...p, critique: p.quantite === 0 }))
+      .filter((p) => !seulementCritiques || p.critique);
+>>>>>>> c95f5c0 (feat(alertes): option seulementCritiques)
   }
 
   
