@@ -26,17 +26,17 @@ commande:
 Q07: 
 commande: 
 
-Q08: 
-commande: 
+Q08: c'est la branche experiment/cache-redis 
+commande: git log --graph --all --oneline --decorate
 
-Q09: 
-commande: 
+Q09: Sont ancien chemin étais src/utils.js
+commande: git log --follow --name-only --oneline -- src/outils.js
 
-Q10: 
-commande: 
+Q10: C'est Nathan Robin avec 15 commit
+commande: git shortlog -sn depart
 
-Q11: 
-commande:djsghsdjzsdhjhdsbjshdkjhsdh 
+Q11: 2026-03-24
+commande: git show -s --format="%ad" --date=short v1.0.0
 
 Q12: 
 commande: 
