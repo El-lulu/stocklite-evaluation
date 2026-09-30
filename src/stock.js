@@ -25,16 +25,32 @@ export class Stock {
     return [...this.#produits.values()].sort((a, b) => a.ref.localeCompare(b.ref, 'fr'));
   }
 
+<<<<<<< HEAD
   parCategorie(categorie) {
     return this.lister().filter((p) => p.categorie === categorie);
-  }
-
+=======
   // Produits en alerte : quantité inférieure ou égale au seuil
-  alertes() {
+  alertes({ seulementCritiques = false } = {}) {
     return this.lister()
       .filter((p) => p.quantite < p.seuil)
-      .sort((a, b) => a.quantite - b.quantite);
+      .map((p) => ({ ...p, critique: p.quantite === 0 }))
+      .filter((p) => !seulementCritiques || p.critique);
+>>>>>>> c95f5c0 (feat(alertes): option seulementCritiques)
   }
+
+  
+  // Produits en alerte : quantité inférieure ou égale au seuil
+  alertes(options = {}) {
+      let produits = this.lister().filter((p) => p.quantite < p.seuil);
+
+      if (options.seulementCritiques) {
+        produits = produits.filter((p) => p.quantite === 0);
+      }
+
+      return produits
+        .map((p) => ({ ...p, critique: p.quantite === 0 }))
+        .sort((a, b) => a.quantite - b.quantite);
+    }
 
   // Valeur totale du stock selon une table de prix { ref: prix }
   valeurTotale(prix) {
